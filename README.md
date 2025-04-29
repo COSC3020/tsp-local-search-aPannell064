@@ -51,18 +51,31 @@ What is the worst-case asymptotic time complexity of your implementation? What
 is the worst-case asymptotic memory complexity? Add your answer, including your
 reasoning, to this markdown file.
 
-The algorithm has to go through the local search function at least once all the 
+The algorithm must go through the local search function at least once all the 
 way through, which has two for loops, both from roughly 0 to $|V|$. Since the twoOptSwap 
 function is only called once per local search call and only has to iterate from 
 0 to n, that won't impact the complexity. However, this happens for as long as 
 there is improvement. In the worst case, this would happen on every possible 
 set of swaps that can be made, or basically however many ways we can chose two 
-elements from $|V|$ to swap. This is equivelant to $\chose{|V|}{2} = \frac{|V|!}{2! \cdot (|V|-2)!}$.
-We can reduce this to $\frac{|V|(|V|-1)}{2}$, which is asymptotically the same as 
-$|V|^2$. Therefore the asymptotic compolexity is going to be $\Theta(|V|^4)$ for the 
-worst case.
+elements from $|V|$ to swap. This is roughly $\binom{|V|}{2} = \frac{|V|!}
+{2! \cdot (|V|-2)!}$. We can reduce this to $\frac{|V|(|V|-1)}{2}$, which is 
+asymptotically the same as $|V|^2$. Therefore the asymptotic complexity is going 
+to be $\Theta(|V|^4)$ for the worst case.
 
 The memory complexity is very easy. The largest element in the entire algorithm 
 is the distance matrix, which has a complexity of $|V|^2$. No copies are every made, 
 so the memory complexity doesn't really change once the algorithm gets going. Therefore, 
 the asymptotic memory complexity is $\Theta(|V|^2)$
+
+## Extra Help
+
+I didn't really understand what local search was, so I used https://en.wikipedia.org/wiki/2-opt 
+to give me a better idea of what I needed to do. 
+
+Additionally, because I wanted to make sure that I was actually shuffling the path, I used 
+https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle to get the Fisher-Yates shuffle 
+algorithm. 
+
+"I certify that I have listed all sources used to complete this exercise, including the use of any Large Language Models. 
+All of the work is my own, except where stated otherwise. I am aware that plagiarism carries severe penalties and that 
+if plagiarism is suspected, charges may be filed against me without prior notice." 
